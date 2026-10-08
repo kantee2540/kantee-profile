@@ -1,0 +1,103 @@
+:root {
+  --brand: #0b4fbf;
+  --brand-dark: #083a8c;
+  --accent: #1f9d55;
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --text: #1c2a3a;
+  --muted: #5b6b7d;
+  --border: #e3e8f0;
+  --shadow: 0 10px 30px rgba(11, 79, 191, 0.08);
+  --radius: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: #4d8dff;
+    --brand-dark: #2f6fe0;
+    --accent: #3ccf7e;
+    --bg: #0d1420;
+    --surface: #151f2e;
+    --text: #e6edf6;
+    --muted: #9aabbf;
+    --border: #243246;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: 'Poppins', sans-serif; line-height: 1.2; }
+
+a { color: inherit; text-decoration: none; }
+
+.container { width: min(1100px, 100% - 32px); margin-inline: auto; }
+
+section { padding: 96px 0; }
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--brand);
+  margin-top: 12px;
+}
+.section-sub { color: var(--muted); margin-bottom: 48px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: var(--brand-dark); }
+.btn-outline { border: 2px solid currentColor; }
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  color: var(--brand);
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
